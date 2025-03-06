@@ -9,13 +9,14 @@ import { MyContactsComponent } from "./pages/my-contacts/my-contacts.component";
 import { NewTransactionComponent } from "./pages/new-transaction/new-transaction.component";
 import { NewContactComponent } from "./pages/new-contact/new-contact.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
+import { UsersManagerComponent } from "./admin/users-manager/users-manager.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LoginComponent, RegisterComponent,
     MenuComponent, UserComponent, MyTransactionsComponent,
-    MyContactsComponent, NewTransactionComponent, NewContactComponent, ProfileComponent],
+    MyContactsComponent, NewTransactionComponent, NewContactComponent, ProfileComponent, UsersManagerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
