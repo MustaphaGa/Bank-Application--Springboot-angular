@@ -2,9 +2,9 @@
     <h3>Contacts List</h3>
     <div class="d-flex justify-content-end  p-3">
 
-        <button type="button" class="btn btn-success">
-            <em class="fas fa-plus"></em>&nbsp;
-            New Contact</button>
+        <a [routerLink]="'/user/new-contact'" class="btn btn-success me-3" type="submit">
+            <em class="fas fa-plus"></em>&nbsp;New contact
+          </a>
     </div>
 
     <table class="table table-striped table-bordered">

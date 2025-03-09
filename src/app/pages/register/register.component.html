@@ -18,15 +18,15 @@
         <input type="password" class="form-control" id="password" placeholder="Password">
     </div>
     <div class="mb-3">
-        <label for="password">Confirm Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <label for="passwordC">Confirm Password</label>
+        <input type="password" class="form-control" id="passwordC" placeholder="Password">
     </div>
     <div class="d-flex justify-content-between mb-3">
         <button type="button" class="btn btn-primary">
             <em class="fas fa-sign-in-alt">&nbsp; </em>Save Account
         </button>
         <div>
-            already have an account&nbsp;<button type="button" class="btn btn-link">
+            already have an account&nbsp;<button type="button" class="btn btn-link" (click)="login()">
                 Login
             </button>
         </div>
