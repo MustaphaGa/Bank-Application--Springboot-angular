@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MyTransactionsComponent } from './pages/my-transactions/my-transactions.component';
@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MainAdminComponent } from './admin/main-admin/main-admin.component';
 import { UsersManagerComponent } from './admin/users-manager/users-manager.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -40,3 +41,8 @@ export const routes: Routes = [
     ],
   },
 ];
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

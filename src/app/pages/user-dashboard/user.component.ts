@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
-import { InfoLightComponent, LightInfoInput } from "../../components/info-light/info-light.component";
+import {
+  InfoLightComponent,
+  LightInfoInput,
+} from '../../components/info-light/info-light.component';
 import { NgFor } from '@angular/common';
+import { TransactionService } from '../../services/services';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [InfoLightComponent,NgFor],
+  imports: [InfoLightComponent, NgFor],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  styleUrl: './user.component.scss',
 })
 export class UserComponent {
-
   accountInfoList: Array<LightInfoInput> = [];
 
-  constructor() {}
+  constructor( ) {}
 
   ngOnInit(): void {
     this.intialiseAccountInfo();
+    
   }
 
   private intialiseAccountInfo() {
@@ -39,5 +43,3 @@ export class UserComponent {
     ];
   }
 }
-
-
