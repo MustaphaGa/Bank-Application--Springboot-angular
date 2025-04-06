@@ -37,8 +37,8 @@ export class RegisterComponent implements OnInit {
         body: this.userDto,
       })
       .subscribe({
-        next: (data) => {
-          console.log(data);
+        next: async (data) => {
+          await this.router.navigate(['confirm-register']);
         },
         error: (err) => {
           this.errorMessages = err.error.validationErrors;

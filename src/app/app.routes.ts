@@ -12,13 +12,22 @@ import { MainAdminComponent } from './admin/main-admin/main-admin.component';
 import { UsersManagerComponent } from './admin/users-manager/users-manager.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { NgModule } from '@angular/core';
+import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
+import { AdminGuardService } from './services/guard/admin-guard/admin-guard.service';
+import { TokenGuardService } from './services/guard/token-guard/token-guard.service';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: 'confirm-register', component: ConfirmRegisterComponent },
+
+  { path: 'access-denied', component: AccessDeniedComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'user',
     component: MainPageComponent,
+    canActivate: [TokenGuardService],
+
     children: [
       { path: 'my-transaction', component: MyTransactionsComponent },
       { path: 'my-contact', component: MyContactsComponent },
@@ -33,6 +42,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: MainAdminComponent,
+    canActivate: [TokenGuardService, AdminGuardService],
     children: [
       { path: 'clients', component: UsersManagerComponent },
       { path: 'profile', component: ProfileComponent },
@@ -43,6 +53,6 @@ export const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

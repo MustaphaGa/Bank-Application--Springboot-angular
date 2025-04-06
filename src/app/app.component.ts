@@ -16,19 +16,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    LoginComponent,
-    RegisterComponent,
-    MenuComponent,
-    UserComponent,
-    MyTransactionsComponent,
-    MyContactsComponent,
-    NewTransactionComponent,
-    NewContactComponent,
-    ProfileComponent,
-    UsersManagerComponent,
-    MainPageComponent,
-  ],
+    RouterOutlet
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
