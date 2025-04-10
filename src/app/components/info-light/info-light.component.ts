@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { title } from 'process';
 
 export interface LightInfoInput {
   title?: String;

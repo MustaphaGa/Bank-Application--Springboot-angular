@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       })
       .subscribe({
         next: async (data: any) => {
-          localStorage.setItem('token', data.token as string);
+          localStorage.setItem('token', data.token);
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(data.token);
           if (decodedToken.authorities[0].authority === 'ROLE_ADMIN') {

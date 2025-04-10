@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../services/services';
 import { UserDto } from '../../services/models';
 import { CommonModule } from '@angular/common';
-import { error } from 'console';
 
 @Component({
   selector: 'app-register',
