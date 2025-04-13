@@ -33,7 +33,7 @@ export const routes: Routes = [
       { path: 'my-contact', component: MyContactsComponent },
       { path: 'new-transaction', component: NewTransactionComponent },
       { path: 'new-contact', component: NewContactComponent },
-      { path: 'contact/:idContact', component: NewContactComponent },
+      { path: 'new-contact/:id', component: NewContactComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'dashboard', component: UserComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
