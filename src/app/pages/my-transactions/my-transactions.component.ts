@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TransactionService } from '../../services/services';
-import { TransactionDto } from '../../services/models';
+import { StatisticService, TransactionService } from '../../services/services';
+import { ContactDto, TransactionDto } from '../../services/models';
 import { CommonModule } from '@angular/common';
 import { HelperService } from '../../services/helper/helper.service';
 
@@ -14,20 +14,37 @@ import { HelperService } from '../../services/helper/helper.service';
 })
 export class MyTransactionsComponent implements OnInit {
   transactions: Array<TransactionDto> = [];
+  accountBalance = 0;
+ 
 
   constructor(
     private transactionService: TransactionService,
-    private helperService : HelperService
-
+    private helperService: HelperService,
+    private statisticService : StatisticService
   ) {}
   ngOnInit(): void {
-    this.transactionService.findAllByUserId({ 
-      'user-id': this.helperService.userID
+    this.findAllByUserId();
+    this.statisticService.getAccountBalance({
+      'user-id':this.helperService.userID
     }).subscribe({
-      next: (data) => {
-        this.transactions = data;
-        console.log('transactions:',this.transactions)
-      },
+      next:(data)=>{
+        this.accountBalance = data;
+      }
     });
+  
   }
+
+  findAllByUserId() {
+    this.transactionService
+      .findAllByUserId({
+        'user-id': this.helperService.userID,
+      })
+      .subscribe({
+        next: (data) => {
+          this.transactions = data;
+    
+        },
+      });
+  }
+
 }

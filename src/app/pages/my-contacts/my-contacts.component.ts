@@ -14,6 +14,7 @@ import { HelperService } from '../../services/helper/helper.service';
 })
 export class MyContactsComponent implements OnInit {
   contacts: Array<ContactDto> = [];
+  contactIdToDelete: any = -1;
   constructor(
     private contactService: ContactService,
     private helperService: HelperService,
@@ -34,19 +35,22 @@ export class MyContactsComponent implements OnInit {
         },
       });
   }
-  deleteContact(id: number): void {
-    this.contactService.delete1({ 'contact-id': id }).subscribe({
-      next: (data) => {
-        console.log('contast est supprimé avec succés', data);
-        this.findAllContactByIdUser();
-      },
-      error: (err) => {
-        console.error('Erreur lors de la suppression', err);
-      },
-    });
+  deleteContact(): void {
+    if (this.contactIdToDelete) {
+      this.contactService
+        .delete1({ 'contact-id': this.contactIdToDelete })
+        .subscribe({
+          next: () => {
+            console.log('contast est supprimé avec succés');
+            this.findAllContactByIdUser();
+          },
+          error: (err) => {
+            console.error('Erreur lors de la suppression', err);
+          },
+        });
+    }
   }
   modifierContact(id: number) {
     this.router.navigate(['user/new-contact', id]);
   }
- 
 }

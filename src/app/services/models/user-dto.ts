@@ -9,4 +9,5 @@ export interface UserDto {
   id?: number;
   lastName: string;
   password: string;
+  iban?: string;
 }

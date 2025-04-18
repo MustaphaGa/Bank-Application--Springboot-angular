@@ -1,6 +1,9 @@
-<div class="p-3">
+<div class="p-3 m-lg-2">
     <h3>Transactions</h3>
-    <div class="d-flex justify-content-end  p-3">
+    <div>
+        <h5>Your account balance : {{accountBalance}} $</h5>
+    </div>
+    <div class="d-flex justify-content-end  p-3 mt-0">
 
         <a [routerLink]="'/user/new-transaction'" class="btn btn-success me-3" type="submit">
             <em class="fas fa-plus"></em>&nbsp;New transaction
@@ -19,20 +22,18 @@
         </thead>
         <tbody>
             <tr *ngFor="let transaction of transactions">
-                <td>{{transaction.transactionDate | date:'yyyy-MM-dd '}}</td>
+                <td scope="row">{{transaction.transactionDate}}</td>
                 <td>
-                    <span 
-                    [class.text-warning] = "transaction.type === 'TRANSFERT'"
-                    [class.text-success] = "transaction.type === 'DEPOSIT'">
-                    {{transaction.amount}}</span>
-                    </td>
+                    <span [class.text-warning]="transaction.type === 'TRANSFERT'"
+                        [class.text-success]="transaction.type === 'DEPOSIT'">
+                        {{transaction.amount}}</span>
+                </td>
                 <td>{{transaction.destinationIban}}</td>
 
                 <td>
-                    <span class="badge"
-                    [class.bg-warning] = "transaction.type === 'TRANSFERT'"
-                    [class.bg-success] = "transaction.type === 'DEPOSIT'">
-                    {{transaction.type}}</span>
+                    <span class="badge" [class.bg-warning]="transaction.type === 'TRANSFERT'"
+                        [class.bg-success]="transaction.type === 'DEPOSIT'">
+                        {{transaction.type}}</span>
                 </td>
             </tr>
 
