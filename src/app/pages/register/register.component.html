@@ -3,7 +3,7 @@
 
     <div class="alert alert-danger" role="alert" *ngIf="errorMessages.length">
         <div *ngFor="let msg of errorMessages">{{msg}}</div>
-      </div>
+    </div>
     <div class="mb-3">
         <label for="firstName" class="form-label">First-Name </label>
         <input [(ngModel)]="userDto.firstName" type="text" class="form-control" id="firstName" placeholder="first Name">

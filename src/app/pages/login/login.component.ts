@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           this.errorMessages.push(err.error.errorMessage);
         },
       });
+      console.log(localStorage.getItem('token'))
   }
   async register() {
     await this.router.navigate(['register']);

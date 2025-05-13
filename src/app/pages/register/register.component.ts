@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { AuthenticationService } from '../../services/services';
-import { UserDto } from '../../services/models';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { AuthenticationService } from "../../services/services";
+import { UserDto } from "../../services/models";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-register',
+  selector: "app-register",
   standalone: true,
   imports: [FormsModule, CommonModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  templateUrl: "./register.component.html",
+  styleUrl: "./register.component.scss",
 })
 export class RegisterComponent implements OnInit {
   userDto: UserDto = {
-    email: '',
-    firstName: '',
-    lastName: '',
-    password: '',
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+    iban: "", 
   };
 
   errorMessages: Array<string> = [];
@@ -37,7 +38,7 @@ export class RegisterComponent implements OnInit {
       })
       .subscribe({
         next: async (data) => {
-          await this.router.navigate(['confirm-register']);
+          await this.router.navigate(["confirm-register"]);
         },
         error: (err) => {
           this.errorMessages = err.error.validationErrors;
@@ -46,6 +47,6 @@ export class RegisterComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['login']);
+    this.router.navigate(["login"]);
   }
 }

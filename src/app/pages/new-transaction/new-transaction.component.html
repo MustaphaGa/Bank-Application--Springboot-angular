@@ -6,7 +6,7 @@
     </div>
     <div class=" card">
 
-       
+
         <div class="m-lg-1">
             <label class="form-label">Transaction Type </label>
             <select [(ngModel)]="transactionDto.type" class="form-select">
@@ -17,11 +17,14 @@
 
         <div class="m-lg-1" *ngIf="transactionDto.type === 'TRANSFERT'">
             <label class="form-label">Choose a Contact </label>
-            <select class="form-select" [(ngModel)]="transactionDto.destinationIban">
-                <option [ngValue]="''">Select a Contact</option>
-                <option *ngFor="let contact of contacts" [ngValue]="contact.iban">
+            <select class="form-select" [(ngModel)]="selectedContact" (change)="onContactChange()">
+                <option *ngFor="let contact of contacts" [ngValue]="contact">
                     {{contact.firstName + ' '+ contact.lastName}}</option>
             </select>
+        </div>
+        <div class="m-lg-1" *ngIf="transactionDto.type === 'TRANSFERT'">
+            <label for="iban" class="form-label">IBAN </label>
+            <input [(ngModel)]="iban" type="text" class="form-control" readonly>
         </div>
 
         <div class="m-lg-1" *ngIf="transactionDto.type ">
@@ -30,10 +33,7 @@
                 placeholder="Amount">
         </div>
 
-        <div class="m-lg-1" *ngIf="transactionDto.type === 'TRANSFERT'">
-            <label for="iban" class="form-label">IBAN </label>
-            <input [(ngModel)]="transactionDto.destinationIban" type="text" class="form-control" id="iban">
-        </div>
+
 
 
 

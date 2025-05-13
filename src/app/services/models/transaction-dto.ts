@@ -7,6 +7,7 @@ export interface TransactionDto {
   destinationIban?: string;
   id?: number;
   transactionDate?: string;
-  type?: 'TRANSFERT' | 'DEPOSIT';
+  type?: "TRANSFERT" | "DEPOSIT";
   userId?: number;
+  contactId?: number;
 }

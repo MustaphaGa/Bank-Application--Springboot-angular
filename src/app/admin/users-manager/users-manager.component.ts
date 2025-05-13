@@ -1,15 +1,15 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { UserDto } from '../../services/models';
-import { UserService } from '../../services/services';
-import { CommonModule } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component, NgModule, OnInit } from "@angular/core";
+import { UserDto } from "../../services/models";
+import { UserService } from "../../services/services";
+import { CommonModule } from "@angular/common";
+import { FormsModule, NgModel } from "@angular/forms";
 
 @Component({
-  selector: 'app-users-manager',
+  selector: "app-users-manager",
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './users-manager.component.html',
-  styleUrl: './users-manager.component.scss',
+  templateUrl: "./users-manager.component.html",
+  styleUrl: "./users-manager.component.scss",
 })
 export class UsersManagerComponent implements OnInit {
   clients: Array<UserDto> = [];
@@ -47,7 +47,7 @@ export class UsersManagerComponent implements OnInit {
     if (this.updateState) {
       this.userService
         .validateAccount({
-          'user-id': this.userIdToUpdate as number,
+          "user-id": this.userIdToUpdate as number,
         })
         .subscribe({
           next: () => {
@@ -57,7 +57,7 @@ export class UsersManagerComponent implements OnInit {
     } else {
       this.userService
         .invalidateAccount({
-          'user-id': this.userIdToUpdate as number,
+          "user-id": this.userIdToUpdate as number,
         })
         .subscribe({
           next: () => {},

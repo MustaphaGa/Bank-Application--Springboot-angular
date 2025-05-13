@@ -6,12 +6,17 @@ import { isPlatformBrowser } from '@angular/common';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   const platformId = inject(PLATFORM_ID);
-  
-  console.log('Interceptor running for:', req.url);
 
   if (isPlatformBrowser(platformId)) {
     const token = localStorage.getItem('token');
-    if (token) {
+
+    const isValidToken =
+      token && token !== 'null' && token !== 'undefined' && token.trim() !== '';
+
+    const isPublicEndpoint =
+      req.url.includes('/auth/login') || req.url.includes('/auth/register');
+
+    if (isValidToken && !isPublicEndpoint) {
       const authReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`

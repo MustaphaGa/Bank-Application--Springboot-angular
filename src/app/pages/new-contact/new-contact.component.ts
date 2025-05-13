@@ -14,7 +14,11 @@ import { HelperService } from '../../services/helper/helper.service';
   styleUrl: './new-contact.component.scss',
 })
 export class NewContactComponent implements OnInit {
-  contactDto: ContactDto = {};
+  contactDto: ContactDto = {
+      email:'',
+      firstName: '',
+      lastName: '',
+  };
   errorMessages: Array<string> = [];
   constructor(
     private contactService: ContactService,
